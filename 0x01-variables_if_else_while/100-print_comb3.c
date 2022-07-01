@@ -1,25 +1,28 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 /**
- *main - entry
- *
- *Description: program that prints the numbers from 00 to 99
- *
- *Return: 0 (success)
- */
+  * main - entry point
+  *
+  * Return: success(0)
+  */
 int main(void)
 {
-	int i, j;
+	int a, b;
 
-	for (i = 48; i <= 57; ++i)
+	for (a = 48; a <= 56; a++)
 	{
-		for (j = 48; j <= 57; ++j)
+		for (b = 49; b <= 57; b++)
 		{
-			putchar(i);
-			putchar(j);
-			if (i != 57 || j != 57)
+			if (b > a)
 			{
-				putchar(',');
-				putchar(' ');
+				putchar(a);
+				putchar(b);
+				if (a != 56 || b != 57)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
 		}
 	}
