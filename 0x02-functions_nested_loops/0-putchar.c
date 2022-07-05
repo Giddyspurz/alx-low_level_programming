@@ -1,17 +1,19 @@
+#include"main.h"
+
 /**
- *main - entry
+ * main - check the code
  *
- *Description prints _putchar followed by a new line
- *
- *Return: 0 (success)
+ * Return: Always 0.
  */
 int main(void)
 {
-	char c[9] = "Holberton";
-	int i;
+	int index;
+	char putchar_arr[] = {'_', 'p', 'u', 't', 'c', 'h', 'a', 'r'};
 
-	for (i = 0; i < 9; ++i)
-		_putchar(c[i]);
+	for (index = 0; index <= 7; index++)
+	{
+	_putchar(putchar_arr[index]);
+	}
 	_putchar('\n');
 	return (0);
 }
