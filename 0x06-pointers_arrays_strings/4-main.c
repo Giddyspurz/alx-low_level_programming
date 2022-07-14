@@ -1,7 +1,8 @@
 #include "main.h"
 #include <stdio.h>
+
 /**
- * main - check the code
+ * print_array - check the code
  * @a: an array of integers
  * @n: the number of elements to swap
  *
@@ -28,7 +29,6 @@ void print_array(int *a, int n)
  * main - check the code
  *
  * Return: Always 0.
- *
  */
 int main(void)
 {

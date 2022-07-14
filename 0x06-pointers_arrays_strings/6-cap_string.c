@@ -1,34 +1,32 @@
 #include "main.h"
+
 /**
- * cap_string - function that capitalizes all words of a string.
- * @str: character.
- *  Return: the value of str.
+ * cap_string - capitalize all words of a string
+ * @a: characters to be sorted for capitalization
+ *
+ * Return: returns capitalized words
  */
-char *cap_string(char *str)
+char *cap_string(char *a)
 {
-	int k[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
 	int i = 0;
 	int j;
+	char d[] = {' ', '\t', '\n', ',', ';', '.', '!',
+'?', '"', '(', ')', '{', '}'};
 
-	if (str[i] >= 97 && str[i] <= 122)
-	{
-		str[i] = str[i] - 32;
-	}
-	i++;
-	while (str[i] != '\0')
+	while (*(a + i) != '\0')
 	{
 		for (j = 0; j < 13; j++)
 		{
-			if (str[i] == k[j])
+			if (*(a + i) == d[j] || i == 0)
 			{
-				if (str[i + 1] >= 97 && str[i + 1] <= 122)
+				if (*(a + i + 1) >= 97 && *(a + i + 1) <= 122)
 				{
-					str[i + 1] = str[i + 1] - 32;
+					a[i + 1] -= 32;
 				}
-				break;
+
 			}
 		}
 		i++;
 	}
-	return (str);
+	return (a);
 }
