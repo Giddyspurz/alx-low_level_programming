@@ -1,62 +1,53 @@
 #include "variadic_functions.h"
+#include <stdarg.h>
+#include <stdio.h>
 /**
- *_strlen - finds the length of a string
- *@str: string
+ * print_all - prints anything.
+ * @format: a list of types of arguments passed to the function.
  *
- *Return: i length of the string
- */
-int _strlen(const char * const str)
-{
-	int i = 0;
-
-	while (str[i++])
-		;
-	return (--i);
-}
-/**
- *print_all - prints anything
- *@format: formant to print
- *
- *Return: void
+ * Return: no return.
  */
 void print_all(const char * const format, ...)
 {
-	va_list _print;
-	int i = 0, separator = 0, len = _strlen(format);
-	char *ptr = NULL;
+	va_list ap;
+	unsigned int x = 0, y, c = 0;
+	char *str;
+	const char t_arg[] = "cifs";
 
-	va_start(_print, format);
-	while (format[i])
+	va_start(ap, format);
+	while (format && format[x])
 	{
-		separator = 1;
-		switch (format[i])
+		y = 0;
+		while (t_arg[y])
+		{
+			if (format[x] == t_arg[y] && c)
+			{
+				printf(", ");
+				break;
+			} y++;
+		}
+		switch (format[x])
 		{
 		case 'c':
-			printf("%c", va_arg(_print, int));
-			break;
-		case 'f':
-			printf("%f", va_arg(_print, double));
+			printf("%c", va_arg(ap, int)), c = 1;
 			break;
 		case 'i':
-			printf("%i", va_arg(_print, int));
+			printf("%d", va_arg(ap, int)), c = 1;
+			break;
+		case 'f':
+			printf("%f", va_arg(ap, double)), c = 1;
 			break;
 		case 's':
-			ptr = va_arg(_print, char *);
-			if (!*ptr)
+			str = va_arg(ap, char *), c = 1;
+			if (!str)
 			{
 				printf("(nil)");
 				break;
 			}
-			printf("%s", ptr);
+			printf("%s", str);
 			break;
-		default:
-			separator = 0;
-			break;
-		}
-		if (i < len - 1 && separator)
-			printf(", ");
-		i++;
+		} x++;
 	}
-	printf("\n");
-	va_end(_print);
+	printf("\n"), va_end(ap);
 }
+
