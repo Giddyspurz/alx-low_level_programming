@@ -1,0 +1,5 @@
+
+"
+exit
+clear
+git add .
